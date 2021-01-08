@@ -1,0 +1,46 @@
+### Root
+GET http://localhost:4000
+
+### Error
+GET http://localhost:4000/some_routeasdad
+
+### Protected
+GET http://localhost:4000/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDkwNDI5NDcsImV4cCI6MTYwOTA0Mjk3NywiYXVkIjpbWyI1ZmU3ZmEzZmU5M2RkNzc0NmFlM2NhZGQiXV0sImlzcyI6ImpxdWluY2wuY29tIn0.W_fJMcBHrzbF0LvoFScJTz2PSVgRNr42kjLewuo4Qqo
+
+
+### Auth Register
+POST http://localhost:4000/auth/register
+Content-Type: application/json
+
+{
+  "email": "jcardenas.lie@gmail.com",
+  "password": "1234"
+}
+
+### Auth Login
+POST http://localhost:4000/auth/login
+Content-Type: application/json
+
+{
+  "email": "jcardenas.lie@gmail.com",
+  "password": "1234"
+}
+
+
+### Auth Refresh Token
+POST http://localhost:4000/auth/refresh-token
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDkxMDE5OTksImV4cCI6MTY0MDY1OTU5OSwiYXVkIjoiNWZlOGYyYWU4Y2EwMzQ5ZGNjZWJlODYzIiwiaXNzIjoianF1aW5jbC5jb20ifQ.KxcZS0qWi89jd8cSvaIfPyvOD5FE-xwb9PHFgNYh-sY"
+}
+
+### Auth Logout
+DELETE http://localhost:4000/auth/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDkxMDIwMTUsImV4cCI6MTY0MDY1OTYxNSwiYXVkIjoiNWZlOGYyYWU4Y2EwMzQ5ZGNjZWJlODYzIiwiaXNzIjoianF1aW5jbC5jb20ifQ.z4SEImVx8M9vNekZBBW5ziWaH6oufSB1Zkhs-IRg2j8"
+}
+
