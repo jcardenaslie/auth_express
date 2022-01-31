@@ -9,7 +9,6 @@ const {
 const client = require('../helpers/init.redis')
 
 const register = async (req, res, next)=>{
-  console.log(req.body);
   try {
     // const {email, password} = req.body
     const { email, password }  = await authSchema.validateAsync(req.body)
@@ -59,6 +58,27 @@ const login = async (req, res, next) => {
   }
 }
 
+const getToken = async (req, res, next) => {
+  try {
+
+    const {email} = req.query
+    const user = await User.findOne({email})
+
+    if (!user) 
+      throw httpErrors.NotFound("User not found")
+
+    const accessToken = await signAccessToken(user)
+    const refreshToken = await signRefreshToken(user._id)
+
+    res.send({accessToken, refreshToken})
+
+  } catch (error) {
+    if ( error.isJoi )
+      return next(httpErrors.BadRequest("Invalid credentials"))
+    next(error)
+  }
+}
+
 const refreshToken = async (req, res, next)=>{
   try {
     const { refreshToken } = req.body
@@ -83,11 +103,9 @@ const logout = async (req, res, next) => {
 
     client.DEL(userId, (err, val) => {
       if (err) {
-        console.log(err.message);
+        console.error(err.message);
         throw httpErrors.InternalServerError()
       }
-
-      console.log(val);
       res.sendStatus(204)
     })
   } catch (error) {
@@ -99,5 +117,6 @@ module.exports = {
   register,
   login,
   refreshToken,
-  logout
+  logout,
+  getToken
 }

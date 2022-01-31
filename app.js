@@ -1,45 +1,26 @@
+// TODO: Separar entre config (Infra) y api (App)
+// TODO: implementar helmet, logger, sentry
+
 const express = require("express")
 const morgan = require("morgan")
 const httpErrors = require("http-errors")
+const cors = require('cors')
+
 require("dotenv").config()
 require("./helpers/init.mongodb")
 require("./helpers/init.redis")
-const { verifyAccessToken } = require("./helpers/jwt.helper")
 
-const AuthRoute = require("./routes/auth.route")
+const initApplication = require ("./api")
 
 const app = express()
+app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 const PORT = process.env.PORT || 4000
 
-app.use("/auth", AuthRoute )
-
-app.get("/", verifyAccessToken, async ( req, res, next )=> {
-  res.send("Hola")
-})
-
-app.get("/protected", verifyAccessToken, async ( req, res, next )=> {
-  res.send("Protected")
-})
-
-app.use( async (req, res, next ) => {
-  next(httpErrors.NotFound())
-})
-
-app.use(async (err, req, res, next )=>{
-  console.log(err);
-  const status =  err.status || 500
-  res.status(status).send({
-    error:{
-      status: err.status || 500,
-      message: err.message
-    }
-  })
-})
-
+initApplication(app)
 
 app.listen(PORT, ()=> {
   console.log(`Server runninng on port: ${PORT}`)

@@ -4,7 +4,8 @@ const {
   register,
   login,
   refreshToken,
-  logout
+  logout,
+  getToken
 } = require("../controllers/auth.controller")
 
 router.post("/register", register)
@@ -14,5 +15,7 @@ router.post("/login", login)
 router.post("/refresh-token", refreshToken)
 
 router.delete("/logout", logout)
+
+router.get("/token", getToken)
 
 module.exports = router

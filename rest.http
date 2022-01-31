@@ -6,7 +6,7 @@ GET http://localhost:4000/some_routeasdad
 
 ### Protected
 GET http://localhost:4000/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDkwNDI5NDcsImV4cCI6MTYwOTA0Mjk3NywiYXVkIjpbWyI1ZmU3ZmEzZmU5M2RkNzc0NmFlM2NhZGQiXV0sImlzcyI6ImpxdWluY2wuY29tIn0.W_fJMcBHrzbF0LvoFScJTz2PSVgRNr42kjLewuo4Qqo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTAxNTY2NzAsImV4cCI6MTYxMDE1NjcwMCwiYXVkIjoiNWZmOTBhN2UyM2NiODQzMGIxYmVkNzgxIiwiaXNzIjoianF1aW5jbC5jb20ifQ.11ZCIexB_pW0eXvqYwxbblrf7WgtdUjQdo4kysu7zco
 
 
 ### Auth Register
@@ -33,7 +33,7 @@ POST http://localhost:4000/auth/refresh-token
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDkxMDE5OTksImV4cCI6MTY0MDY1OTU5OSwiYXVkIjoiNWZlOGYyYWU4Y2EwMzQ5ZGNjZWJlODYzIiwiaXNzIjoianF1aW5jbC5jb20ifQ.KxcZS0qWi89jd8cSvaIfPyvOD5FE-xwb9PHFgNYh-sY"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTAxNTY2NzAsImV4cCI6MTY0MTcxNDI3MCwiYXVkIjoiNWZmOTBhN2UyM2NiODQzMGIxYmVkNzgxIiwiaXNzIjoianF1aW5jbC5jb20ifQ.4ToQtf1zT1XRXWzgk7JLOCFQuZrU-Ki83Zoj27ojFoU"
 }
 
 ### Auth Logout
