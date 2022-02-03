@@ -8,4 +8,6 @@ const {
 
 router.get("/", asyncHandler( getByUserId ) )
 
+// router.patch("/:id/read", asyncHandler(  ))
+
 module.exports = router

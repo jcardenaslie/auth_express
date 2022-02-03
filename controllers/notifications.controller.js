@@ -16,7 +16,7 @@ const schemas = {
   }).unknown(true)
 }
 
-const getByUserId = async (req, res, next) => {
+export const getByUserId = async (req, res, next) => {
   try {
     const {_id} = req.auth.user
     const { page = 1, limit = 10 } = req.query
