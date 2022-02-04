@@ -23,6 +23,7 @@ const signAccessToken = (user) => {
 }
 
 const verifyAccessToken = (req, res, next) => {
+  console.log(req.headers)
   if (!req.headers.authorization) {
     return next(httpErrors.Unauthorized("Missing auth token"))
   }
