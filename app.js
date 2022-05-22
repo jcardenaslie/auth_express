@@ -25,3 +25,10 @@ initApplication(app)
 app.listen(PORT, ()=> {
   console.log(`Server runninng on port: ${PORT}`)
 })
+
+process.on('SIGTERM', () => {
+  debug('SIGTERM signal received: closing HTTP server')
+  app.close(() => {
+    debug('HTTP server closed')
+  })
+})

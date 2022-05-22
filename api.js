@@ -2,16 +2,17 @@ const AuthRoute = require("./routes/auth.route")
 const UsersRoute = require("./routes/users.routes")
 const FriendsRoute = require("./routes/friends.routes")
 const NotificationsRoute = require("./routes/notifications.routes")
+const RecommendationRoute = require("./routes/recommendations.routes")
 const httpErrors = require("http-errors")
 
 const { verifyAccessToken } = require("./helpers/jwt.helper")
-
 
 const initApplication = (app) => {
   app.use("/auth", AuthRoute )
   app.use("/users", UsersRoute )
   app.use("/friends", verifyAccessToken, FriendsRoute )
   app.use("/notifications", verifyAccessToken, NotificationsRoute )
+  app.use("/recommendations", verifyAccessToken, RecommendationRoute )
   app.get("/", verifyAccessToken, helloWorld)
   app.get("/unprotected", helloWorld )
   app.get("/protected", verifyAccessToken, protected)
